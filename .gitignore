@@ -3,7 +3,8 @@ venv
 .env
 env
 
-target/
+target/*
+!target/static_index.html
 logs/
 dbt_packages/
 
