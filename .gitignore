@@ -4,9 +4,8 @@ venv
 env
 
 target/
-dbt_packages/
 logs/
-profiles.yml
+
 
 .DS_Store
 

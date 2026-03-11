@@ -1,0 +1,19 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: FY26_TASK_FORCE
+      database: FY26_TASKFORCE_NAGASHIMA
+      schema: RAW
+      account: ''
+      user: ''
+    prod:
+      type: snowflake
+      role: ACCOUNTADMIN
+      warehouse: FY26_TASK_FORCE
+      database: FY26_TASKFORCE_NAGASHIMA
+      schema: RAW
+      account: ''
+      user: ''
