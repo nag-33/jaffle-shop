@@ -1,34 +1,16 @@
-import json
 import streamlit as st
 import streamlit.components.v1 as components
+import os
 
-# HTMLファイルのパス
 html_file_path = 'target/static_index.html'
 
-st.set_page_config(
-    page_title="dbt App",
-    page_icon="🧊",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://dev.classmethod.jp/',
-        'Report a bug': "https://classmethod.jp/",
-        'About': "Classmethod,Inc"
-    }
-)
-
-st.markdown(
-    r"""
-    <style>
-    .stDeployButton {
-            visibility: hidden;
-        }
-    </style>
-    """, unsafe_allow_html=True
-)
-
-# StreamlitでHTMLを表示
-with open(html_file_path, 'r', encoding='utf-8') as file:
-    html_content = file.read()
-components.html(html_content, height=1024, scrolling=False)
-
+# ファイルが存在するか確認
+if not os.path.exists(html_file_path):
+    st.error(f"エラー: ファイルが見つかりません: {os.path.abspath(html_file_path)}")
+else:
+    try:
+        with open(html_file_path, 'r', encoding='utf-8') as file:
+            html_content = file.read()
+        components.html(html_content, height=1024, scrolling=False)
+    except Exception as e:
+        st.error(f"ファイル読み込みエラー: {type(e).__name__} - {e}")
